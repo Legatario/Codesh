@@ -25,8 +25,6 @@
     }
 
     .btn:hover{
-        background:  #ff93c7;
-        /* padding: 6px; */
         color:  #183d46;
         border: #183d46 1px solid;
     }

@@ -58,7 +58,7 @@
     .current{
         background:  #419fb9;
         color: #fff;
-        border-radius: 50%;
+        border-radius: 10px;
         font-size: 18px;
         font-weight: bold;
         padding: 0.2em 0.5em;
