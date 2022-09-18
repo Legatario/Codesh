@@ -17,7 +17,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="pagination">
+                <!-- <div class="pagination">
                     <div class="pagination__left" v-show="pageID > 1">
                         <Button btnName="Anterior" @callEvent='Previous'/>
                     </div>
@@ -27,7 +27,8 @@
                     <div class="pagination__right" v-show="pageID !== pages">
                         <Button btnName="Seguinte" @callEvent='Next' />
                     </div>
-                </div>
+                </div> -->
+                <Pagination :pageID="pageID" :maxPage="pages" @choicePage="onChoicePage"/>
             </article>
     </section>
 </template>
@@ -35,6 +36,7 @@
 <script>
 import Loading from '../Loader/Loading.vue';
 import Button from './Paginacao/Button.vue';
+import Pagination from './Paginacao/Pagination.vue';
     export default{
     name: "MainList",
     data() {
@@ -43,7 +45,7 @@ import Button from './Paginacao/Button.vue';
             localStorageDatas: null,
             size: null,
             pages: null,
-            pageID: 1
+            pageID: 10
         };
     },
     methods: {
@@ -86,6 +88,9 @@ import Button from './Paginacao/Button.vue';
         },
         Next(){
             console.log('2')
+        },
+        onChoicePage(dados){
+            console.log(dados)
         }
     },
     //chamada de função ao iniciar a pagina
@@ -94,7 +99,8 @@ import Button from './Paginacao/Button.vue';
     },
     components: {
     Loading,
-    Button
+    Button,
+    Pagination
 }
 }
 </script>
