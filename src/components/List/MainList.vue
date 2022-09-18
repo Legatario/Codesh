@@ -1,34 +1,35 @@
 <!-- template para mostrar todos os artigos -->
 <template>
     <Loading v-show="!sectionDatas"/>
+    <Msg :msg="msg" v-show="contMsg == 1"/>
     <section>
             <article v-show="sectionDatas">
                 <div class="card__info">
-                    <p class="card__article--title">talla: <span>{{ size }}</span></p>
                     <p class="card__article--title">paginas: <span>{{ pageID }}/{{ pages }}</span></p>
                 </div>
-                <div class="card__destak" v-for="section in sectionDatas" :key="section.id" v-show="section.headline && section?.featured_media?.thumbnail" >
+                <div class="card__destak" v-for="section in sectionDatas" :key="section.id" v-show="section.headline && section?.featured_media?.thumbnail && section?.categories.length > 0" >
                     <a href="#">
                         <img :src="section?.featured_media?.thumbnail" :alt="section.title" v-show="section?.featured_media?.thumbnail" class="card__destake--img">
                         <div class="card__article">
-                            <span class="card__article--title"> {{ section?.categories[0].name }} </span>
+                            <span class="card__article--title" v-if="section?.categories.length > 0"> {{ section?.categories[0].name }} </span>
                             <h2 class="card__article--text">{{ section.title }}</h2>
                             <p class="card__article--span">{{ section.headline }}</p>
                         </div>
                     </a>
                 </div>
-                <!-- <div class="pagination">
-                    <div class="pagination__left" v-show="pageID > 1">
-                        <Button btnName="Anterior" @callEvent='Previous'/>
-                    </div>
-                    <div class="pagination__mid">
-                        <span>{{ pageID }}</span>
-                    </div>
-                    <div class="pagination__right" v-show="pageID !== pages">
-                        <Button btnName="Seguinte" @callEvent='Next' />
-                    </div>
-                </div> -->
-                <Pagination :pageID="pageID" :maxPage="pages" @choicePage="onChoicePage"/>
+                <div class="pagination">
+                    <aside class="pagination__container">
+                        <div class="pagination__left" v-show="pageID > 1">
+                            <Button btnName="<<" @callEvent='Previous'/>
+                        </div>
+    
+                        <Pagination :pageID="pageID" :maxPage="pages" @choicePage="onChoicePage"/>
+    
+                        <div class="pagination__right" v-show="pageID !== pages">
+                            <Button btnName=">>" @callEvent='Next' />
+                        </div>
+                    </aside>
+                </div>
             </article>
     </section>
 </template>
@@ -37,6 +38,7 @@
 import Loading from '../Loader/Loading.vue';
 import Button from './Paginacao/Button.vue';
 import Pagination from './Paginacao/Pagination.vue';
+import Msg from './Msg.vue';
     export default{
     name: "MainList",
     data() {
@@ -45,18 +47,21 @@ import Pagination from './Paginacao/Pagination.vue';
             localStorageDatas: null,
             size: null,
             pages: null,
-            pageID: 10
+            pageID: 1,
+            msg: null,
+            contMsg: 0
         };
     },
     methods: {
         //chamada na api retorna uma lista com todos os posts
         async getList() {
-            const req = await fetch("https://api.beta.mejorconsalud.com/wp-json/mc/v2/posts?&per_page=15");
+            const req = await fetch(`https://api.beta.mejorconsalud.com/wp-json/mc/v2/posts?&per_page=15&page=${this.pageID}`);
             // const req = await fetch("https://api.beta.mejorconsalud.com/wp-json/mc/v1/")
             const data = await req.json();
             this.sectionDatas = data.data;
             this.size = data.size
             this.pages = data.pages
+
             // console.log(data)
             // fim da chamada de api
         },
@@ -81,16 +86,42 @@ import Pagination from './Paginacao/Pagination.vue';
             this.sectionDatas = data.data;
             this.size = data.size
             this.pages = data.pages
-            console.log(data);
+
+            //criando msg
+            this.msg = `Se encontraron ${this.size} artículos`
+            this.contMsg = this.contMsg+1
+            //limpa msg
+            setTimeout(()=> this.contMsg = this.contMsg+1 , 3000)
+
+            // console.log(data);
         },
         Previous(){
-            console.log('1')
+            this.sectionDatas = null
+            this.pageID = 1;
+            if(this.localStorageDatas !== null){
+                this.getSearchList();
+            }else{
+                this.getList();
+            }
         },
         Next(){
-            console.log('2')
+            this.sectionDatas = null
+            this.pageID = this.pages;
+            if(this.localStorageDatas !== null){
+                this.getSearchList();
+            }else{
+                this.getList();
+            }
         },
+        //função de paginação
         onChoicePage(dados){
-            console.log(dados)
+            this.sectionDatas = null
+            this.pageID = dados;
+            if(this.localStorageDatas !== null){
+                this.getSearchList();
+            }else{
+                this.getList();
+            }
         }
     },
     //chamada de função ao iniciar a pagina
@@ -100,7 +131,8 @@ import Pagination from './Paginacao/Pagination.vue';
     components: {
     Loading,
     Button,
-    Pagination
+    Pagination,
+    Msg
 }
 }
 </script>
@@ -124,7 +156,8 @@ import Pagination from './Paginacao/Pagination.vue';
         margin-right: 2em;
         margin-top:5em;
     }
-    .pagination, 
+    .pagination,
+    .pagination__container, 
     .pagination__left,
     .pagination__right,
     .pagination__mid{
@@ -133,19 +166,9 @@ import Pagination from './Paginacao/Pagination.vue';
        justify-content: center;
     }
 
-    .pagination__left{
-        margin: auto;
-        margin-left: 0;
+    .pagination__container{
+        border-radius: 15px;
+        padding: 0.5em;
+        margin: .5em 0;
     }
-
-    .pagination__right{
-        margin: auto;
-        margin-right: 0;
-    }
-
-    .pagination{
-        margin-top: 1em;
-        margin-bottom: 3em;
-    }
-
 </style>
