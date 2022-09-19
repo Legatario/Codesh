@@ -5,8 +5,13 @@
     <NotFaulty v-show="size == 0" :localStorageDatas="localStorageDatas" />    
     <section>
             <article v-show="sectionDatas && size > 0">
-                <div class="card__info">
-                    <p class="card__article--title">paginas: <span>{{ pageID }}/{{ pages }}</span></p>
+                <div class="card__relevance">
+                    <div class="card__relevance--btn" v-if="rel">
+                        <Button btnName="Relevancia: ↑" @callEvent='relationship(), onChoiceRelevance("up")' />
+                    </div>
+                    <div class="card__relevance--btn" v-if="!rel">
+                        <Button btnName="Relevancia:  ↓" @callEvent='relationship(), onChoiceRelevance("up")' />
+                    </div>
                 </div>
                 <div class="card__destak" v-for="section in sectionDatas" :key="section.id" v-show="section.headline && section?.featured_media?.thumbnail && section?.categories.length > 0" >
                     <RouterLink :to="{path: `/articulo/${section.id}`}"> 
@@ -18,6 +23,10 @@
                         </div>
                     </RouterLink>
                 </div>
+                <div class="card__info">
+                    <p class="card__article--title">paginas: <span>{{ pageID }}/{{ pages }}</span></p>
+                </div>
+
                 <div class="pagination">
                     <aside class="pagination__container">
                         <div class="pagination__left" v-show="pageID > 1">
@@ -51,14 +60,15 @@ import NotFaulty from '../NotFaulty/NotFaulty.vue';
             pages: null,
             pageID: 1,
             msg: null,
-            contMsg: 0
+            contMsg: 0,
+            rel: true
         };
     },
     methods: {
         //chamada na api retorna uma lista com todos os posts
         async getList() {
             const req = await fetch(`https://api.beta.mejorconsalud.com/wp-json/mc/v2/posts?&per_page=15&page=${this.pageID}`);
-            // const req = await fetch("https://api.beta.mejorconsalud.com/wp-json/mc/v1/")
+
             const data = await req.json();
             this.sectionDatas = data.data;
             this.size = data.size
@@ -82,8 +92,8 @@ import NotFaulty from '../NotFaulty/NotFaulty.vue';
         },
         //função de busca na api atraves do que o usuario digitou
         async getSearchList() {
-            const req = await fetch(`https://api.beta.mejorconsalud.com/wp-json/mc/v2/posts?search=${this.localStorageDatas}&page=${this.pageID}`);
-            // const req = await fetch("https://api.beta.mejorconsalud.com/wp-json/mc/v1/")
+            const req = await fetch(`https://api.beta.mejorconsalud.com/wp-json/mc/v2/posts?search=${this.localStorageDatas}&page=${this.pageID}&per_page=15`);
+            
             const data = await req.json();
             this.sectionDatas = data.data;
             this.size = data.size
@@ -96,6 +106,26 @@ import NotFaulty from '../NotFaulty/NotFaulty.vue';
             setTimeout(()=> this.contMsg = this.contMsg+1 , 3000)
 
             // console.log(data);
+        },
+        //chamada dos artigos mais relevantes
+        async getSearchListRelevance(){
+            const req = await fetch(`https://api.beta.mejorconsalud.com/wp-json/mc/v2/posts?search=${this.localStorageDatas}&orderby=relevance&per_page=15`);
+        
+            const data = await req.json();
+            this.sectionDatas = data.data;
+            this.size = data.size
+            this.pages = data.pages
+        },
+        //chamada na api para obter os mais relevantes na lista total
+        async getListRelevance() {
+            const req = await fetch(`https://api.beta.mejorconsalud.com/wp-json/mc/v2/posts?&per_page=15&orderby=relevance`);
+
+            const data = await req.json();
+            this.sectionDatas = data.data;
+            this.size = data.size
+            this.pages = data.pages
+
+            // console.log(data)
         },
         Previous(){
             this.sectionDatas = null
@@ -124,6 +154,19 @@ import NotFaulty from '../NotFaulty/NotFaulty.vue';
             }else{
                 this.getList();
             }
+        },
+        onChoiceRelevance(dados){
+            this.sectionDatas = null
+            this.pageID = 1;
+            if(this.localStorageDatas !== null){
+                dados == "up" ? this.getSearchListRelevance() : this.getSearchList()
+            }else{
+                dados == "up" ? this.getListRelevance() : this.getList()
+            }
+        },
+        relationship(){
+            this.sectionDatas = null
+            this.rel = !this.rel
         }
     },
     //chamada de função ao iniciar a pagina
@@ -154,16 +197,21 @@ import NotFaulty from '../NotFaulty/NotFaulty.vue';
         align-items: flex-end;
         display: flex;
         flex-direction: column;
-        border-bottom: 1px solid #ccc;
         margin-left: 2em;
         margin-right: 2em;
-        margin-top:5em;
+    }
+    .card__relevance{
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        flex-direction: column;
+        margin-left: 2em;
+        margin-right: 2em;
+        margin-top: 5em;
     }
     .pagination,
     .pagination__container, 
     .pagination__left,
-    .pagination__right,
-    .pagination__mid{
+    .pagination__right{
        display: flex;
        align-items: center;
        justify-content: center;
