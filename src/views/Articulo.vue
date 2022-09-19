@@ -1,5 +1,7 @@
 <template>
-    <h1>{{params}}</h1>
+    <main class="container">
+        <h1>{{params}}</h1>    
+    </main>
 </template>
 
 <script>

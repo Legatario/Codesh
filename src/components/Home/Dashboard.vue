@@ -219,6 +219,10 @@ import Loading from '../Loader/Loading.vue';
         padding: 1em;
 
     }
+    .card__destake--img{
+        max-width: 150px;
+        max-height: 150px;
+    }
     #destak{
         text-align: center;
         border-bottom: 1px dotted #d4649a;
