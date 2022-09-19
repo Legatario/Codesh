@@ -1,9 +1,10 @@
 <!-- template para mostrar todos os artigos -->
 <template>
     <Loading v-show="!sectionDatas"/>
-    <Msg :msg="msg" v-show="contMsg == 1"/>
+    <Msg :msg="msg" v-show="contMsg == 1 && size > 0"/>
+    <NotFaulty v-show="size == 0" :localStorageDatas="localStorageDatas" />    
     <section>
-            <article v-show="sectionDatas">
+            <article v-show="sectionDatas && size > 0">
                 <div class="card__info">
                     <p class="card__article--title">paginas: <span>{{ pageID }}/{{ pages }}</span></p>
                 </div>
@@ -39,6 +40,7 @@ import Loading from '../Loader/Loading.vue';
 import Button from './Paginacao/Button.vue';
 import Pagination from './Paginacao/Pagination.vue';
 import Msg from './Msg.vue';
+import NotFaulty from '../NotFaulty/NotFaulty.vue';
     export default{
     name: "MainList",
     data() {
@@ -132,7 +134,8 @@ import Msg from './Msg.vue';
     Loading,
     Button,
     Pagination,
-    Msg
+    Msg,
+    NotFaulty
 }
 }
 </script>
