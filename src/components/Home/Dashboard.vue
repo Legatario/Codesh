@@ -2,25 +2,25 @@
     <Loading v-show="!articleDatas"/>
     <div class="carrosel">
         <div class="card__container" v-for="article, index, in articleDatas" :key="article.id" v-show="article.headline && article?.featured_media?.thumbnail && index <= 5" >
-            <a href="#">
+            <RouterLink :to="{path: `/articulo/${article.id}`}">
                 <img :src="article?.featured_media?.thumbnail" :alt="article.title" v-show="article?.featured_media?.thumbnail" class="card__container--img">
                 <div class="card__article">
                     <h2 class="card__article--title">{{ article?.categories[0].name }}</h2>
                     <p class="card__article--text">{{ article.title }}</p>
                 </div>
-            </a>
+            </RouterLink>
         </div>
     </div>
 
     <main class="gridHightlight">
         <div class="gridHightlight__content" v-for="(mainArticle, index) in mainArticleDatas" :key="mainArticle.id" v-show=" index <= 4 && mainArticle?.featured_media?.thumbnail">
-            <a href="#">
+            <RouterLink :to="{path: `/articulo/${mainArticle.id}`}"> 
                 <img :src="mainArticle?.featured_media?.thumbnail" :alt="mainArticle.title" v-show="mainArticle?.featured_media?.thumbnail" class="gridHightlight__content--img">
                 <div class="gridHightlight__article">
                     <h2 class="gridHightlight__article--title">{{ mainArticle.title }}</h2>
                     <p class="gridHightlight__article--text">{{ mainArticle.headline }}</p>
                 </div>
-            </a>
+            </RouterLink>
         </div>
     </main>
 
@@ -28,14 +28,14 @@
         <h1 id="destak">Destacados</h1>
             <article>
                 <div class="card__destak" v-for="section in sectionDatas" :key="section.id" v-show="section.headline && section?.featured_media?.thumbnail" >
-                    <a href="#">
+                    <RouterLink :to="{path: `/articulo/${section.id}`}"> 
                         <img :src="section?.featured_media?.thumbnail" :alt="section.title" v-show="section?.featured_media?.thumbnail" class="card__destake--img">
                         <div class="card__article">
                             <span class="card__article--title"> {{ section?.categories[0].name }} </span>
                             <h2 class="card__article--text">{{ section.title }}</h2>
                             <p class="card__article--span">{{ section.headline }}</p>
                         </div>
-                    </a>
+                    </RouterLink>
                 </div>
             </article>
     </section>

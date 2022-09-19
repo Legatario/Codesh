@@ -8,14 +8,14 @@
                     <p class="card__article--title">paginas: <span>{{ pageID }}/{{ pages }}</span></p>
                 </div>
                 <div class="card__destak" v-for="section in sectionDatas" :key="section.id" v-show="section.headline && section?.featured_media?.thumbnail && section?.categories.length > 0" >
-                    <a href="#">
+                    <RouterLink :to="{path: `/articulo/${section.id}`}"> 
                         <img :src="section?.featured_media?.thumbnail" :alt="section.title" v-show="section?.featured_media?.thumbnail" class="card__destake--img">
                         <div class="card__article">
                             <span class="card__article--title" v-if="section?.categories.length > 0"> {{ section?.categories[0].name }} </span>
                             <h2 class="card__article--text">{{ section.title }}</h2>
                             <p class="card__article--span">{{ section.headline }}</p>
                         </div>
-                    </a>
+                    </RouterLink>
                 </div>
                 <div class="pagination">
                     <aside class="pagination__container">
