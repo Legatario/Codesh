@@ -1,24 +1,25 @@
 <template>
     <main class="container">
-        <h1>{{params}}</h1>    
+        <Page :routerID="params"/>   
     </main>
 </template>
 
 <script>
-import { useRoute } from 'vue-router'    
+import { useRoute } from 'vue-router'
+import Page from '../components/Pages/Page.vue'    
     export default{
-        name: 'Articulo',
-        data(){
-            return{
-                params: ''
-            }
-        },
-        mounted(){
-            const route = useRoute()
-            this.params = route.params.id
-        }
-       
-    }
+    name: "Articulo",
+    data() {
+        return {
+            params: ""
+        };
+    },
+    mounted() {
+        const route = useRoute();
+        this.params = route.params.id;
+    },
+    components: { Page }
+}
 </script>
 
 <style scoped>
