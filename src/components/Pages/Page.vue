@@ -148,53 +148,54 @@ import NotFaulty from '../NotFaulty/NotFaulty.vue';
     font-size: 16px;
     font-family: Merriweather, "Noto Serif", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-.content ::v-deep p {
+
+:deep(.content p){
     margin: 12px 0;
     color: #414141;
     line-height: 2em;
     letter-spacing: 0.02em;
 }
-.content ::v-deep a{
+:deep(.content a){
     color: #414141;
     line-height: 2em;
     text-decoration: none;
     cursor:auto;
 }
-.content ::v-deep h2{
+:deep(.content h2){
     margin: 24px 0 10px;
     padding: 8px 0 0;
     color: #419fb9;
     font-size: 32px;
     letter-spacing: 0.02em;
 }
-.content ::v-deep h3{
+:deep(.content h3){
     margin: 24px 0 10px;
     padding: 8px 0 0;
     color: #419fb9;
     font-size: 24px;
     letter-spacing: 0.02em;
 }
-.content ::v-deep h4{
+:deep(.content h4){
     margin: 24px 0 10px;
     padding: 8px 0 0;
     color: #419fb9;
     font-size: 20px;
 }
-.navContainer__list::v-deep ul,
-.content ::v-deep ul,
-.content ::v-deep ol{
+:deep(.navContainer__list ul),
+:deep(.content ul),
+:deep(.content ol){
     list-style: none;
     margin-left: 24px;
     margin-right: 24px;
     line-height: 1.8;
 }
-.navContainer__list::v-deep li,
-.content ::v-deep li{
+:deep(.navContainer__list li),
+:deep(.content li){
     list-style-type: disc;
     padding: 4px 0;
     color: #414141;
 }
-.content ::v-deep img{
+:deep(.content img){
     width: 100%;
     height: auto;
     object-fit: cover;
