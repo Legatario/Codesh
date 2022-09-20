@@ -114,10 +114,6 @@ import Loading from '../Loader/Loading.vue';
         padding-right: 16px;
         width: 99%;
     }
-    /* .carrosel::-webkit-scrollbar {
-    width: 6px;
-    background-color: transparent;
-} */
     .card__container{
         min-width: 213px;
         max-width: 213px;
@@ -227,5 +223,18 @@ import Loading from '../Loader/Loading.vue';
         text-align: center;
         border-bottom: 1px dotted #d4649a;
         margin: 2rem 5em
+    }
+    @media(max-width: 600px){
+        .card__destak a{
+            flex-direction: column;
+        }
+        .card__destake--img{
+            height: auto;
+            width: 100%;
+            max-width: 100%;
+            max-height: 100%;
+
+        }
+
     }
 </style>
