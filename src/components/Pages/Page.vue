@@ -1,6 +1,6 @@
 <template>
     <Loading v-show="!articuloDala"/>
-    <NotFaulty localStorageDatas="página" v-show="articuloDala !== null && !articuloDala.title"/>
+    <NotFaulty localStorageDatas="esta página" v-show="articuloDala !== null && !articuloDala.title"/>
     <main v-if="articuloDala !== null && articuloDala.title" class="mainPage">
         <div class="category">
             <span class="category__title">

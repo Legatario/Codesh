@@ -3,7 +3,7 @@
         <img src="https://images.squarespace-cdn.com/content/v1/51cdafc4e4b09eb676a64e68/1470175715831-NUJOMI6VW13ZNT1MI0VB/image-asset.jpeg?format=750w" alt="404">
         <article class="notFaulty__container">
             <h1 class="notFaulty__container--title">AWW... NO LLORES.</h1>
-            <p class="notFaulty__container--text">No se encontraron resultados para esta {{ localStorageDatas }}</p>
+            <p class="notFaulty__container--text">No se encontraron resultados para {{ localStorageDatas }}</p>
         </article>
     </section>
 </template>
