@@ -43,10 +43,9 @@ import Search from './Search.vue';
         // função para colocar o que o usuario digitou no localStorage e posicionar o usuario para a pagina de listas
         onEnter(){
           if(this.inputSearch !== ''){
-            console.log(this.inputSearch);
             localStorage.setItem('searchInput', this.inputSearch);
             this.inputSearch = '';
-            window.location.href = "/Codesh/listviews";
+            window.location.pathname == "/Codesh/listviews" ? document.location.reload(true) : this.$router.push('/listviews')
           }
         }
      }

@@ -83,7 +83,6 @@ import NotFaulty from '../NotFaulty/NotFaulty.vue';
             if (getTest !== null) {
                 this.localStorageDatas = getTest;
                 localStorage.clear();
-                console.log(this.localStorageDatas);
                 this.getSearchList();
             }
             else {

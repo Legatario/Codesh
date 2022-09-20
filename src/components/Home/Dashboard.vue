@@ -80,17 +80,16 @@ import Loading from '../Loader/Loading.vue';
             const req = await fetch("https://api.beta.mejorconsalud.com/wp-json/mc/v2/posts?&orderby=relevance");
             const data = await req.json();
             this.sectionDatas = data.data;
-            console.log(data);
         },
         //função para entender a API
-        async getConsult() {
-            const req = await fetch("https://api.beta.mejorconsalud.com/wp-json/mc/v1/");
-            const data = await req.json();
-            console.log(data);
-        }
+        // async getConsult() {
+        //     const req = await fetch("https://api.beta.mejorconsalud.com/wp-json/mc/v1/");
+        //     const data = await req.json();
+        //     console.log(data);
+        // }
     },
     mounted() {
-        this.getConsult();
+        // this.getConsult();
         this.getSalut();
         this.getMain();
         this.getDestak();
