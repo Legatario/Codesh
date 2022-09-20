@@ -30,7 +30,7 @@ import Search from './Search.vue';
      },
      data(){
       return{
-        icon: '/img/lupa.png',
+        icon: 'https://github.com/Legatario/Codesh/blob/master/public/img/lupa.png?raw=true',
         show: false,
         inputSearch:''
       }
@@ -43,10 +43,9 @@ import Search from './Search.vue';
         // função para colocar o que o usuario digitou no localStorage e posicionar o usuario para a pagina de listas
         onEnter(){
           if(this.inputSearch !== ''){
-            console.log(this.inputSearch);
             localStorage.setItem('searchInput', this.inputSearch);
             this.inputSearch = '';
-            window.location.href = "/listviews";
+            window.location.pathname == "/Codesh/listviews" ? document.location.reload(true) : this.$router.push('/listviews')
           }
         }
      }

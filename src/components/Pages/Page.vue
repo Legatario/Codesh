@@ -63,12 +63,12 @@ import NotFaulty from '../NotFaulty/NotFaulty.vue';
 
             const data = await req.json();
             this.articuloDala = data; 
-            console.log(data)      
+            // console.log(data)      
             // fim da chamada de api
         },
         //bucando id pelo window antes de fazer a requisição 
         getRouter() {
-            const callRouter = window.location.pathname.replace(/[/articulo/]/g, "");
+            const callRouter = window.location.pathname.replace(/[/Codesh/articulo/]/g, "");
             this.routerNumber = callRouter;
             this.getPage();
         },

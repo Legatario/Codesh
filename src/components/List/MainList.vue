@@ -10,7 +10,7 @@
                         <Button btnName="Relevancia: ↑" @callEvent='relationship(), onChoiceRelevance("up")' />
                     </div>
                     <div class="card__relevance--btn" v-if="!rel">
-                        <Button btnName="Relevancia:  ↓" @callEvent='relationship(), onChoiceRelevance("up")' />
+                        <Button btnName="Relevancia:  ↓" @callEvent='relationship(), onChoiceRelevance("down")' />
                     </div>
                 </div>
                 <div class="card__destak" v-for="section in sectionDatas" :key="section.id" v-show="section.headline && section?.featured_media?.thumbnail && section?.categories.length > 0" >
@@ -83,7 +83,6 @@ import NotFaulty from '../NotFaulty/NotFaulty.vue';
             if (getTest !== null) {
                 this.localStorageDatas = getTest;
                 localStorage.clear();
-                console.log(this.localStorageDatas);
                 this.getSearchList();
             }
             else {

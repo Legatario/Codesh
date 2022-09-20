@@ -12,7 +12,7 @@
         name: 'Search',
         data(){
             return{
-                icon: '/img/lupa.png',
+                icon: 'https://github.com/Legatario/Codesh/blob/master/public/img/lupa.png?raw=true',
                 emits: ['callsearch']
             }
         }
