@@ -127,4 +127,15 @@ import Search from './Search.vue';
         min-width: 150px;
       }
     }
+    @media(max-width: 400px){
+      .wrapper{
+        padding: 15px 5px;
+      }
+      nav{
+        font-size: 14px;
+      }
+      nav a{
+        margin: 12px 10px
+      }
+    }
   </style>
