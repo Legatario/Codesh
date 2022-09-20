@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://blog.estacio.br/wp-content/uploads/2021/01/Entenda-a-origem-e-o-significado-do-s%C3%ADmbolo-da-Medicina.jpeg" />
+<img src="https://i.pinimg.com/236x/d0/bd/c4/d0bdc4ed9f77e873b7c410773ce28a26.jpg" />
 </p>
 
 <h1 align="center"> Health Translation </h1>
