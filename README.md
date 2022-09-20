@@ -18,6 +18,11 @@
 <p> Case desenvolvido para a Vue Challenge, o desafio era criar uma Home Page com um buscador de artigos para facilitar aos usuários encontrarem conteúdos personalizados sobre saúde e nutrição o resultado da busca mostra a quantidade de artigos encontrados, ao clicar em um artigo abrirá uma tela exibindo o conteúdo do artigo</p>
 <p> O projeto tem 3 paginas, a Home com informações de artigos relevantes, o listViews informando todos os artigos publicados e o Articulo, mostrando o detale de cada publicação, o usuários pode mexer livremente entre as paginas.</p>
 
+## Conceitos
+
+ - Conceitos de Componentização.
+ - conceitos do dynamic routes.
+ - meta-tags og:tags.
 
 ## 📁 Acesso ao projeto
 
@@ -37,16 +42,10 @@
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Para compilar
 
 ```sh
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
 ```
 
 ## Autor
