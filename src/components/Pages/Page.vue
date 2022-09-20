@@ -233,4 +233,10 @@ import NotFaulty from '../NotFaulty/NotFaulty.vue';
     font-weight: normal;
     padding: 4px 0;
 }
+
+@media(max-width: 400px){
+    :deep(.navContainer__list li){
+        font-size: 13px;
+    }
+}
 </style>
