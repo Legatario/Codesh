@@ -199,15 +199,20 @@ import Loading from '../Loader/Loading.vue';
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: 500px;
+        min-height: 500px;
         align-items: center;
     }
     .gridHightlight a img{
-        max-height: 120px;
+        height: 138px;
+        width: 160px;
+    }
+    .card__destake--img{
+        max-width: 150px;
+        max-height: 150px;
     }
     .gridHightlight >div:first-child a img{
         width: 100% !important;
-        min-height: 70% !important;
+        height: 70%;
         padding-left: 12px;
     }
 
@@ -215,14 +220,27 @@ import Loading from '../Loader/Loading.vue';
         padding: 1em;
 
     }
-    .card__destake--img{
-        max-width: 150px;
-        max-height: 150px;
-    }
     #destak{
         text-align: center;
         border-bottom: 1px dotted #d4649a;
         margin: 2rem 5em
+    }
+    @media(max-width: 800px){
+        .gridHightlight{
+            display: flex;
+            flex-direction: column;
+        }
+        .gridHightlight >div:first-child{
+            display: flex;
+            justify-content: center;
+        }
+        .gridHightlight >div:first-child a{
+            display: flex;
+            justify-content: center;
+            max-height: 250px;
+            max-width: 500px;
+            align-items: center;
+        }
     }
     @media(max-width: 600px){
         .card__destak a{
@@ -235,6 +253,20 @@ import Loading from '../Loader/Loading.vue';
             max-height: 100%;
 
         }
+        #destak{
+            margin: 2rem 16px;
+        }
+        .card__article{
+            margin-top: 1em;
+        }
+        .gridHightlight >div:first-child a img{
+            height: 0 auto;
+        }
 
+    }
+    @media(max-width: 400px){
+        .gridHightlight__content a{
+            flex-direction: column;
+        }
     }
 </style>

@@ -88,8 +88,6 @@ import NotFaulty from '../NotFaulty/NotFaulty.vue';
 
 .mainPage{
     margin: 5em 1.5rem;
-    padding-left: 26px;
-    padding-right: 26px;
     max-width: 850px;
 }
 .category{

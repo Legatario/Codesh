@@ -61,7 +61,7 @@ import Search from './Search.vue';
     }
     .wrapper{
       background: #fff;
-      padding: 15px 50px;
+      padding: 15px ;
       display: flex;
       justify-content: flex-end;
       align-items: center;
@@ -92,6 +92,7 @@ import Search from './Search.vue';
       align-content: center;
       justify-content: center;
       align-items: center;
+      transition: .5s;
     }
 
     #iconSearch{

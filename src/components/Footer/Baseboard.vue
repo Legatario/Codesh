@@ -1,10 +1,8 @@
 <template>
     <footer id="footer">
-        <div class="container">
             <div class="jsx"></div>
             <p>Mejor con Salud Revista sobre buenos hábitos y cuidados para tu salud © 2012 – 2022 . Todos los derechos reservados.</p>
             <div class="jsx"></div>
-        </div>
     </footer>
 </template>
 
@@ -16,7 +14,7 @@
 
 <style scoped>
     #footer{
-        height: 100px;
+        min-height: 100px;
         background: #265e6c;
         color: #fff;
         display: flex;
@@ -30,8 +28,10 @@
         background: repeating-linear-gradient( -45deg, transparent 0px, transparent 2px, #419fb9 2px, #419fb9 4px );
         height: 8px;
         width: 100%;
+        max-width: 1076px;
+        margin: 1rem 0;
     }
     p{
-        padding: 20px 0; 
+        padding: 2rem 1rem; 
     }
 </style>

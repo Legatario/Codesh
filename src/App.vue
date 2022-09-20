@@ -33,9 +33,19 @@ import Baseboard from './components/Footer/Baseboard.vue';
     margin: 0;
     box-sizing: border-box;
   }
+  html{
+    font-size: 62,5%;
+  }
 
   .container{
     max-width: 1076px;
     margin: 0 auto;
+  }
+  @media(max-width: 300px){
+    body{
+      overflow-x: scroll;
+      width: 350px;
+      scroll-behavior: smooth;
+    }
   }
 </style>
