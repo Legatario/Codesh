@@ -68,7 +68,7 @@ import NotFaulty from '../NotFaulty/NotFaulty.vue';
         },
         //bucando id pelo window antes de fazer a requisição 
         getRouter() {
-            const callRouter = window.location.pathname.replace(/[/articulo/]/g, "");
+            const callRouter = window.location.pathname.replace(/[/Codesh/articulo/]/g, "");
             this.routerNumber = callRouter;
             this.getPage();
         },
