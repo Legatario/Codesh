@@ -17,7 +17,7 @@ import Baseboard from './components/Footer/Baseboard.vue';
 },
     data(){
       return{
-        logo_src: "/img/SaludLogo.svg",
+        logo_src: "https://raw.githubusercontent.com/Legatario/Codesh/e218db4f1c06469e9440f16e6194e6f95ff8432b/public/img/SaludLogo.svg",
         alt_src: "Salud Logo"
       }
     }
