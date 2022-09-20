@@ -46,7 +46,7 @@ import Search from './Search.vue';
             this.show = !this.show
             localStorage.setItem('searchInput', this.inputSearch);
             this.inputSearch = '';
-            window.location.pathname == "/Codesh/listviews" ? document.location.reload(true) : this.$router.push('/listviews')
+            window.location.pathname == "/Codesh/listviews" ? location.reload() : this.$router.push('/listviews')
           }
         }
      }
