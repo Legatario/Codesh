@@ -32,5 +32,15 @@
             transform: rotate(360deg);
         }
     }
+    @media(max-width: 800px){
+        .section{
+            height: 100vw;
+        }
+    }
+    @media(max-width: 400px){
+        .section{
+            height: 200vw;
+        }
+    }
 </style>
 

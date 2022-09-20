@@ -57,4 +57,14 @@
             margin: 2em 0;
         }
     }
+    @media(max-width: 400px){
+        .notFaulty__img{
+            min-height: 100vw;
+            padding: 3rem 0;
+        }
+        .notFaulty__img img{
+        width: 100%;
+        height: 100%;
+    }
+    }
 </style>
