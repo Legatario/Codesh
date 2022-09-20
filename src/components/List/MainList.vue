@@ -4,7 +4,7 @@
     <Msg :msg="msg" v-show="contMsg == 1 && size > 0"/>
     <NotFaulty v-show="size == 0" :localStorageDatas="localStorageDatas" />    
     <section>
-            <article v-show="sectionDatas && size > 0">
+            <article v-show="sectionDatas && size > 0" class="listArticle">
                 <div class="card__relevance">
                     <div class="card__relevance--btn" v-if="rel">
                         <Button btnName="Relevancia: ↑" @callEvent='relationship(), onChoiceRelevance("up")' />
@@ -184,6 +184,9 @@ import NotFaulty from '../NotFaulty/NotFaulty.vue';
 
 <style scoped>
 
+    .listArticle{
+        min-height: 50vw;
+    }
     .card__destak{
         border-bottom: 1px solid #ccc;
         margin-left: 2em;
@@ -220,5 +223,10 @@ import NotFaulty from '../NotFaulty/NotFaulty.vue';
         border-radius: 15px;
         padding: 0.5em;
         margin: .5em 0;
+    }
+    @media(max-width: 1000px){
+        .listArticle{
+        min-height: 100vw;
+        }
     }
 </style>
