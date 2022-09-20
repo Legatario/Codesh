@@ -118,4 +118,13 @@ import Search from './Search.vue';
     .search__input:focus{
       outline: none;
     }
+    @media(max-width: 500px){
+
+      .serarch__container{
+        width: 80%;
+      }
+      .search__input{
+        min-width: 150px;
+      }
+    }
   </style>
