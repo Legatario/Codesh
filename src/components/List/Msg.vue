@@ -27,4 +27,9 @@
         text-align: center;
 
     }
+    @media(max-width: 400px){
+        .message-container{
+            max-width: 80%;
+        }
+    }
 </style>

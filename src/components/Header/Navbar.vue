@@ -30,7 +30,7 @@ import Search from './Search.vue';
      },
      data(){
       return{
-        icon: '/img/lupa.png',
+        icon: 'https://github.com/Legatario/Codesh/blob/master/public/img/lupa.png?raw=true',
         show: false,
         inputSearch:''
       }
@@ -46,7 +46,7 @@ import Search from './Search.vue';
             console.log(this.inputSearch);
             localStorage.setItem('searchInput', this.inputSearch);
             this.inputSearch = '';
-            window.location.href = "/listviews";
+            window.location.href = "/Codesh/listviews";
           }
         }
      }

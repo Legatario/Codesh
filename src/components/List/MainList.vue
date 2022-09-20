@@ -1,7 +1,8 @@
 <!-- template para mostrar todos os artigos -->
+<!-- v-show="contMsg == 1 && size > 0" -->
 <template>
     <Loading v-show="!sectionDatas"/>
-    <Msg :msg="msg" v-show="contMsg == 1 && size > 0"/>
+    <Msg :msg="msg" />
     <NotFaulty v-show="size == 0" :localStorageDatas="localStorageDatas" />    
     <section>
             <article v-show="sectionDatas && size > 0">
