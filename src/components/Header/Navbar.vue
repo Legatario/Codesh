@@ -46,7 +46,13 @@ import Search from './Search.vue';
             localStorage.setItem('searchInput', this.inputSearch);
             this.inputSearch = '';
             this.show = !this.show
-            window.location.pathname == "/Codesh/listviews" ? this.$router.go(this.$router.currentRoute) : this.$router.push('/listviews')
+            if(window.location.pathname == "/Codesh/listviews"){
+              this.$router.push('/')
+              setTimeout(()=> this.$router.push('/listviews') , 30)
+            }else{
+              this.$router.push('/listviews')
+            }
+            //  this.$router.go(this.$router.currentRoute) : this.$router.push('/listviews')
           }
         }
      }
